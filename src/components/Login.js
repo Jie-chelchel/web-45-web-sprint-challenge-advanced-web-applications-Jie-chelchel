@@ -28,7 +28,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.payload);
         history.push("/bubblepage");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err.message));
   };
   return (
     <div>
