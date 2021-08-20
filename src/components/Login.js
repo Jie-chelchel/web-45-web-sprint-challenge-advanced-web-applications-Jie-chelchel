@@ -63,9 +63,11 @@ const Login = () => {
         </form>
       </div>
 
-      <p id="error" className="error">
-        {error}
-      </p>
+      {error && (
+        <p id="error" className="error">
+          {error}
+        </p>
+      )}
     </div>
   );
 };
