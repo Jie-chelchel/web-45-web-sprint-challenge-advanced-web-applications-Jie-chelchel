@@ -8,11 +8,15 @@ import axiosWithAuth from "../helpers/axiosWithAuth";
 const BubblePage = () => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
-  console.log(colors);
+
   useEffect(() => {
-    fetchColorService().then((res) => {
-      setColors(res.data);
-    });
+    fetchColorService()
+      .then((res) => {
+        setColors(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   }, []);
 
   const toggleEdit = (value) => {
