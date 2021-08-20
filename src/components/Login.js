@@ -28,9 +28,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.payload);
         history.push("/bubbles");
       })
-      .catch((err) =>
-        setError("Please enter a correct user name and password")
-      );
+      .catch((err) => setError("Username or Password not valid"));
   };
   return (
     <div>
@@ -59,7 +57,7 @@ const Login = () => {
               value={user.password}
             />
           </div>
-          <button> Log in</button>
+          <button id="submit"> Log in</button>
         </form>
       </div>
 
