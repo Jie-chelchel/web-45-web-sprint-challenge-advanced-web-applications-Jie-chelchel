@@ -65,14 +65,14 @@ header {
     background: white;
     text-decoration: none;
   }
-  
+
   a:hover {
     background: grey;
-  } 
+  }
 }
 
 .container {
-  display:flex
+  display: flex;
 }
 
 .bubble-wrap {
@@ -133,6 +133,96 @@ button {
 }
 
 .login-form {
-  display:inline;
+  display: inline;
   width: 100px;
+}
+
+.auth {
+  margin: 3rem auto;
+  width: 95%;
+  max-width: 30rem;
+  border-radius: 6px;
+  background-color: #38015c;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+.auth a {
+  text-decoration: none;
+  color: white;
+}
+.auth a:hover {
+  color: orange;
+}
+
+.auth.friend:hover {
+  transform: scale(1.1);
+}
+.header {
+  width: 90%;
+  height: 5rem;
+  background-color: #38015c;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  /* font-size: 4rem; */
+}
+.header ul {
+  list-style: none;
+  margin-right: 6rem;
+  padding: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.header li {
+  margin: 0 1rem;
+}
+.header a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.header button {
+  font: inherit;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.control {
+  margin-bottom: 0.5rem;
+}
+
+.control label {
+  display: block;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.control input {
+  font: inherit;
+  background-color: #f1e1fc;
+  color: #38015c;
+  border-radius: 4px;
+  border: 1px solid white;
+  width: 100%;
+  text-align: left;
+  padding: 0.25rem;
+}
+button {
+  cursor: pointer;
+  font: inherit;
+  color: white;
+  background-color: #9f5ccc;
+  border: 1px solid #9f5ccc;
+  border-radius: 4px;
+  padding: 0.5rem 2.5rem;
 }
