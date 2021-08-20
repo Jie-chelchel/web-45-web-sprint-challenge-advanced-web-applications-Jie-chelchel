@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BubblePage from "./components/BubblePage";
-
+import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
 import "./styles.scss";
 
@@ -16,15 +16,11 @@ function App() {
           </a>
         </header>
         <Switch>
-          <Route path="/bubbles">
-            <BubblePage />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route exaxt path="/">
-            <Login />
-          </Route>
+          <PrivateRoute path="/bubbles" component={BubblePage} />
+
+          <Route path="/login" component={Login} />
+
+          <Route exaxt path="/" component={Login} />
         </Switch>
       </div>
     </Router>
