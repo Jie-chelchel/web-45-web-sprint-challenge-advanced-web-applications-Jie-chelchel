@@ -1,17 +1,16 @@
 import React from "react";
 import MutationObserver from "mutationobserver-shim";
-import fetchColorService from "../services/fetchColorService";
+import { fetchColorService } from "../services/fetchColorService";
 import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
 
 test("Renders without errors", () => {
   render(<BubblePage />);
 });
-
 // jest.mock("../services/fetchColorService");
 
 test("Renders appropriate number of colors passed in through mock", async () => {
-  //Keep in mind that our service is called on mount for this component.
+  // Keep in mind that our service is called on mount for this component.
   // fetchColorService.mockResolvedValueOnce({
   //   data: [
   //     {
@@ -28,4 +27,7 @@ test("Renders appropriate number of colors passed in through mock", async () => 
   // });
   // render(<BubblePage />);
   // const colors = await screen.findAllByTestId("color");
+  // expect(colors).toBeTruthy();
 });
+
+//tried more than 100 times, I cannot get this one work :(
