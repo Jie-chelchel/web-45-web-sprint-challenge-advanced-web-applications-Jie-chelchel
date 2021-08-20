@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 import fetchColorService from "../services/fetchColorService";
+import axiosWithAuth from "../helpers/axiosWithAuth";
 
 const BubblePage = () => {
   const [colors, setColors] = useState([]);
@@ -18,9 +19,23 @@ const BubblePage = () => {
     setEditing(value);
   };
 
-  const saveEdit = (editColor) => {};
+  const saveEdit = (editColor) => {
+    axiosWithAuth()
+      .post("/colors", editColor)
+      .then((res) => {
+        setColors(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
-  const deleteColor = (colorToDelete) => {};
+  const deleteColor = (colorToDelete) => {
+    axiosWithAuth()
+      .delete(`/colors/${colorToDelete}`)
+      .then((res) => {
+        setColors(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="container">
