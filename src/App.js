@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BubblePage from "./components/BubblePage";
+import Bubbles from "./components/BubblePage";
+
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
 import "./styles.scss";
@@ -27,7 +29,7 @@ function App() {
           </a>
         </header>
         <Switch>
-          <PrivateRoute path="/bubbles" component={BubblePage} />
+          <PrivateRoute path="/bubbles" component={Bubbles} />
 
           <Route path="/login" component={Login} />
 
