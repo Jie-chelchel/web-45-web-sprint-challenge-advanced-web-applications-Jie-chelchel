@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axiosWithAuth from "../helpers/axiosWithAuth";
 
 const Login = () => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 
-  const error = "";
+  const initialUser = {
+    password: "",
+    username: "",
+  };
+
+  const [user, setUser] = useState(initialUser);
+  const [error, setError] = useState("");
+  const history = useHistory();
   //replace with error state
 
+  const inputHandler = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post("/login", user)
+      .then((res) => {
+        localStorage.setItem("token", res.data.payload);
+        history.push("/bubblepage");
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
       <h1>Welcome to the Bubble App!</h1>
       <div data-testid="loginForm" className="login-form">
-        <form className="auth">
+        <form className="auth" onSubmit={loginHandler}>
           <div className="control">
             <label>user name</label>
             <input
@@ -19,6 +42,8 @@ const Login = () => {
               placeholder="username"
               name="username"
               id="username"
+              onChange={inputHandler}
+              value={user.username}
             />
           </div>
           <div className="control">
@@ -28,6 +53,8 @@ const Login = () => {
               placeholder="password"
               name="password"
               id="password"
+              onChange={inputHandler}
+              value={user.password}
             />
           </div>
           <button> Log in</button>
