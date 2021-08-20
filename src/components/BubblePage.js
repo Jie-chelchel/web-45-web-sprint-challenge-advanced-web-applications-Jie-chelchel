@@ -8,7 +8,7 @@ import axiosWithAuth from "../helpers/axiosWithAuth";
 const BubblePage = () => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
-
+  console.log(colors);
   useEffect(() => {
     fetchColorService().then((res) => {
       setColors(res.data);
@@ -20,19 +20,25 @@ const BubblePage = () => {
   };
 
   const saveEdit = (editColor) => {
-    axiosWithAuth()
-      .post("/colors", editColor)
-      .then((res) => {
-        setColors(res.data);
-      })
-      .catch((err) => console.log(err));
+    // console.log(editColor);
+    // axiosWithAuth()
+    //   .put(`/colors/${editColor.id}`)
+    //   .then((res) => {
+    //     setColors(res.data);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   const deleteColor = (colorToDelete) => {
     axiosWithAuth()
-      .delete(`/colors/${colorToDelete}`)
+      .delete(`/colors/${colorToDelete.id}`)
       .then((res) => {
-        setColors(res.data);
+        console.log(res.data);
+        const afterDelete = colors.filter((item) => {
+          return item.id !== +res.data;
+        });
+        console.log(afterDelete);
+        setColors(afterDelete);
       })
       .catch((err) => console.log(err));
   };
