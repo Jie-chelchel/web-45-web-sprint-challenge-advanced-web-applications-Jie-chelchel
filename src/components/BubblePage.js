@@ -41,7 +41,6 @@ const BubblePage = () => {
     axiosWithAuth()
       .delete(`/colors/${colorToDelete.id}`)
       .then((res) => {
-        console.log(res.data);
         const afterDelete = colors.filter((item) => {
           return item.id !== +res.data;
         });
@@ -50,7 +49,6 @@ const BubblePage = () => {
       })
       .catch((err) => console.log(err));
   };
-
   return (
     <div className="container">
       <ColorList
