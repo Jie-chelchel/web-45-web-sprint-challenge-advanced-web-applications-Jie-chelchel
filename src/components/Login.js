@@ -26,9 +26,11 @@ const Login = () => {
       .post("/login", user)
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
-        history.push("/bubblepage");
+        history.push("/bubbles");
       })
-      .catch((err) => setError(err.message));
+      .catch((err) =>
+        setError("Please enter a correct user name and password")
+      );
   };
   return (
     <div>

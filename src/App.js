@@ -16,7 +16,7 @@ function App() {
           </a>
         </header>
         <Switch>
-          <Route path="/bubblepage">
+          <Route path="/bubbles">
             <BubblePage />
           </Route>
           <Route path="/login">
