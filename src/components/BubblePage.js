@@ -24,7 +24,7 @@ const BubblePage = () => {
   };
 
   const saveEdit = (editColor) => {
-    console.log(editColor);
+    // console.log(editColor);
     axiosWithAuth()
       .put(`/colors/${editColor.id}`, editColor)
       .then((res) => {
