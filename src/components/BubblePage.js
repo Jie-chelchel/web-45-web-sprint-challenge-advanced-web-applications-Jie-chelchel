@@ -20,13 +20,17 @@ const BubblePage = () => {
   };
 
   const saveEdit = (editColor) => {
-    // console.log(editColor);
-    // axiosWithAuth()
-    //   .put(`/colors/${editColor.id}`)
-    //   .then((res) => {
-    //     setColors(res.data);
-    //   })
-    //   .catch((err) => console.log(err));
+    console.log(editColor);
+    axiosWithAuth()
+      .put(`/colors/${editColor.id}`, editColor)
+      .then((res) => {
+        const afterSelectedColor = colors.filter((item) => {
+          return item.id !== res.data.id;
+        });
+
+        setColors([...afterSelectedColor, editColor]);
+      })
+      .catch((err) => console.log(err));
   };
 
   const deleteColor = (colorToDelete) => {
